@@ -43,6 +43,14 @@
         </f7-col>
       </f7-row>
     </f7-block>
+    <f7-block-title>Print</f7-block-title>
+    <f7-block strong>
+      <f7-row>
+        <f7-col>
+          <f7-button fill raised color="green" @click="printMe" >Print</f7-button>
+        </f7-col>
+      </f7-row>
+    </f7-block>
     <f7-list>
       <f7-list-item link="/dynamic-route/blog/45/post/125/?foo=bar#about" title="Dynamic Route"></f7-list-item>
       <f7-list-item link="/load-something-that-doesnt-exist/" title="Default Route (404)"></f7-list-item>
@@ -50,5 +58,42 @@
   </f7-page>
 </template>
 <script>
-export default {}
+export default {
+  name: 'home',
+  data () {
+    return {
+      someJSONdata: [
+          {
+            name: 'John Doe',
+            email: 'john@doe.com',
+            phone: '111-111-1111'
+          },
+          {
+            name: 'Barry Allen',
+            email: 'barry@flash.com',
+            phone: '222-222-2222'
+          },
+          {
+            name: 'Cool Dude',
+            email: 'cool@dude.com',
+            phone: '333-333-3333'
+          }
+      ]
+    }
+  },
+  methods: {
+    printMe() {
+      console.log('here')
+      // printJS({
+      //     printable: this.someJSONdata,
+      //     properties: ['name', 'email', 'phone'],
+      //     type: 'json',
+      //     gridHeaderStyle: 'color: red;  border: 2px solid #3971A5;',
+      //     gridStyle: 'border: 2px solid #3971A5;'
+      // });
+      printJS('https://6.viki.io/image/3cbf77dfea414e648780c4ed854f7072.jpeg?x=b&s=780x436&q=h&e=t&f=t&cb=1', 'image')
+      //printJS('https://www.google.com.ph/', 'html')
+    }
+  }
+}
 </script>
